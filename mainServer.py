@@ -3,7 +3,7 @@ import threading
 s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 buff=1024
 host=''
-port=80
+port=100
 s.bind((host,port))
 client={}
 address={}
@@ -12,7 +12,7 @@ def accept_client():
         client, client_address=s.accept()
         print("%s:%s has connected" %client_address)
         address[client]=client_address
-        client.send("Type your name and hit ENTER Type {quit} to EXIT" , 'utf-8')
+        client.send(bytes("Type your name and hit ENTER Type {quit} to EXIT" , 'utf-8'))
         threading.Thread(target=handle_client, args=(client,)).start()
 def handle_client(client):
     name=client.recv(buff).decode('utf-8')
@@ -35,3 +35,10 @@ def broadcast(msg, prefix=""):
 '''
 Working on this 
 '''
+
+s.listen(5)
+print("Waiting for connection...")
+ACCEPT_THREAD = threading.Thread(target=accept_client)
+ACCEPT_THREAD.start()
+ACCEPT_THREAD.join()
+s.close()
