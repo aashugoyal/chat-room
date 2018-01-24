@@ -32,13 +32,13 @@ def handle_client(client):
 def broadcast(msg, prefix=""):
     for x in client:
         x.send(bytes(prefix, 'utf-8')+msg)
-'''
-Working on this 
-'''
-
 s.listen(5)
 print("Waiting for connection...")
 ACCEPT_THREAD = threading.Thread(target=accept_client)
 ACCEPT_THREAD.start()
 ACCEPT_THREAD.join()
 s.close()
+'''
+This is main server script 
+I am working on the client server GUI and after completing the client i will push it to remote.
+'''
