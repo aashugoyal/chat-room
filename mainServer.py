@@ -38,7 +38,3 @@ ACCEPT_THREAD = threading.Thread(target=accept_client)
 ACCEPT_THREAD.start()
 ACCEPT_THREAD.join()
 s.close()
-'''
-This is main server script 
-I am working on the client server GUI and after completing the client i will push it to remote.
-'''
